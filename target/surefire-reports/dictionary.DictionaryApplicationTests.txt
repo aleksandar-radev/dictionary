@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: dictionary.DictionaryApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 8.983 s <<< FAILURE! - in dictionary.DictionaryApplicationTests
+contextLoads  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: java.lang.IllegalStateException: Failed to execute CommandLineRunner
+Caused by: java.awt.HeadlessException
+
