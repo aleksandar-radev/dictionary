@@ -20,12 +20,12 @@ public class WordService {
     }
 
 
-    public Set<String> getWords() throws IOException {
+    public Set<String> getWords(String pat) throws IOException {
         Set<String> words = new TreeSet<>();
         String word = reader.readLine();
 
         while (word != null) {
-            if (isValid(word)) {
+            if (isValid(word, pat)) {
                 words.add(word);
             }
             word = reader.readLine();
@@ -33,12 +33,12 @@ public class WordService {
         return words;
     }
 
-    public boolean isValid(String word) {
-        String pattern = "^[ад]{2}$";
+    public boolean isValid(String word, String pat) {
+        String pattern = String.format("^([%s]{2,50})$", pat);
         Pattern p = Pattern.compile(pattern);
         Matcher matcher = p.matcher(word);
 
         return matcher.find();
     }
-    
+
 }
