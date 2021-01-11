@@ -14,18 +14,19 @@ public class WordService {
     private BufferedReader reader;
     private File file;
 
-    public WordService() throws FileNotFoundException {
-        this.file = new File("src/main/resources/words.txt");
-        this.reader = new BufferedReader(new FileReader(file));
+    public WordService() {
     }
 
+    public Set<String> getWords(String letters) throws IOException {
 
-    public Set<String> getWords(String pat) throws IOException {
+        this.file = new File("words.txt");
+        this.reader = new BufferedReader(new FileReader(file));
+
         Set<String> words = new TreeSet<>();
         String word = reader.readLine();
 
         while (word != null) {
-            if (isValid(word, pat)) {
+            if (isValid(word, letters)) {
                 words.add(word);
             }
             word = reader.readLine();
@@ -33,8 +34,8 @@ public class WordService {
         return words;
     }
 
-    public boolean isValid(String word, String pat) {
-        String pattern = String.format("^([%s]{2,50})$", pat);
+    public boolean isValid(String word, String letters) {
+        String pattern = String.format("^([%s]{2,50})$", letters);
         Pattern p = Pattern.compile(pattern);
         Matcher matcher = p.matcher(word);
 
